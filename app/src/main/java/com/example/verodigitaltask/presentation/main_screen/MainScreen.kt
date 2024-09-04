@@ -25,7 +25,6 @@ fun MainScreen(
 ) {
     val token by viewModel.fetchAuthToken().observeAsState()
 
-
     LaunchedEffect(token) {
         token?.let {
             navController.navigate(Screen.TaskListScreen.route+"${it}") {

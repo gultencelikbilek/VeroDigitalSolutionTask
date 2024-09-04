@@ -23,18 +23,16 @@ class TaskWorker (
             // Token al
             val token = authRepository.getAuthToken()
 
-            // API'ye istek gönder ve verileri al
             val response = apiService.getTasks("Bearer $token")
 
             if (response.isSuccessful) {
                 val tasks = response.body() ?: emptyList()
 
-                // Veritabanına kaydet
                 taskDatabase.taskDao.insertAll(tasks.map { it.toTaskEntity() })
 
                 Result.success()
             } else {
-                Result.retry() // API'den beklenmedik bir yanıt aldık, işlemi yeniden dene
+                Result.retry()
             }
         } catch (e: IOException) {
             Log.d("IOException:",e.message.toString())

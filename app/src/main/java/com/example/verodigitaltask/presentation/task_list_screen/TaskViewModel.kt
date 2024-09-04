@@ -38,7 +38,6 @@ class TaskViewModel @Inject constructor(
             Log.d("TaskViewModel", "Fetching tasks with token: $token")
             taskRepository.fetchAndStoreTasks(token)
 
-            // TaskEntity listesini Task listesine dönüştür
             taskRepository.getAllTasks().collect { taskEntities ->
                 Log.d("TaskViewModel", "Tasks fetched: ${taskEntities.size}")
                 _tasks.value = taskEntities.map { it.toTask() }

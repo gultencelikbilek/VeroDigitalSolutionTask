@@ -15,7 +15,7 @@ class MainViewModel @Inject constructor(
     init {
         fetchAuthToken()
     }
-    // ViewModel'de Repository üzerinden token alma işlemi
+
     fun fetchAuthToken() = liveData {
         val token = authRepository.getAuthToken()
         emit(token)

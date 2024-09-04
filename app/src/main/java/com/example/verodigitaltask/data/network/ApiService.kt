@@ -14,10 +14,10 @@ import retrofit2.http.POST
 interface ApiService {
 
     @POST(Constants.END_POINT)
-    @Headers(
-        "Authorization: Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
-        "Content-Type: application/json"
-    )
+   //@Headers(
+   //    "Authorization: Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
+   //    "Content-Type: application/json"
+   //)
     suspend fun login(@Body credentials: LoginRequest): LoginResponse
 
     @GET(Constants.END_POINT_GET)
